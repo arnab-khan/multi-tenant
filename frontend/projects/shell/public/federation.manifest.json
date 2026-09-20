@@ -1,0 +1,6 @@
+{
+  "auth": "http://localhost:4201/remoteEntry.json",
+  "profile": "http://localhost:4202/remoteEntry.json",
+  "dynamic-sites": "http://localhost:4203/remoteEntry.json",
+  "dynamic-forms": "http://localhost:4204/remoteEntry.json"
+}
