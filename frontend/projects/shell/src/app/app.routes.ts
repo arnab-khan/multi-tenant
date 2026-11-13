@@ -1,3 +1,5 @@
+import { isPlatformBrowser } from '@angular/common';
+import { inject, PLATFORM_ID } from '@angular/core';
 import { loadRemoteModule } from '@angular-architects/native-federation';
 import { Routes } from '@angular/router';
 
@@ -8,12 +10,18 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    loadComponent: () =>
+    loadChildren: () => { // `loadChildren` accepts a Promise directly
+      // Skip remote child-route loading during SSR to prevent route extraction from hanging.
+      if (!isPlatformBrowser(inject(PLATFORM_ID))) {
+        return Promise.resolve([{ path: '**', children: [] }]);
+      }
+
       // Dynamically loads an exposed module from a federated remote application
-      loadRemoteModule(
+      return loadRemoteModule(
         'auth', // Remote name from frontend\projects\shell\public\federation.manifest.json
-        './Component', // Exposed module from the auth federation config frontend\projects\auth\federation.config.mjs
-      ).then((m) => m.App), // App class exported from frontend\projects\auth\src\app\app.ts
+        './Routes', // Exposed routes from frontend\projects\auth\federation.config.mjs
+      ).then((m) => m.routes); // Routes exported from frontend\projects\auth\src\app\app.routes.ts
+    },
   },
   {
     path: 'profile',

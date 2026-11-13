@@ -146,6 +146,7 @@
           "builder": "@angular-architects/native-federation:build",
           "options": {
             "target": "auth:serve-original:development",
+            "buildNotifications": { "enable": true },
             "tsConfig": "projects/auth/tsconfig.federation.json",
             "rebuildDelay": 500,
             "cacheExternalArtifacts": true,
@@ -245,6 +246,7 @@
           "builder": "@angular-architects/native-federation:build",
           "options": {
             "target": "profile:serve-original:development",
+            "buildNotifications": { "enable": true },
             "tsConfig": "projects/profile/tsconfig.federation.json",
             "rebuildDelay": 500,
             "cacheExternalArtifacts": true,
@@ -344,6 +346,7 @@
           "builder": "@angular-architects/native-federation:build",
           "options": {
             "target": "dynamic-forms:serve-original:development",
+            "buildNotifications": { "enable": true },
             "tsConfig": "projects/dynamic-forms/tsconfig.federation.json",
             "rebuildDelay": 500,
             "cacheExternalArtifacts": true,
@@ -444,6 +447,7 @@
           "builder": "@angular-architects/native-federation:build",
           "options": {
             "target": "dynamic-sites:serve-original:development",
+            "buildNotifications": { "enable": true },
             "tsConfig": "projects/dynamic-sites/tsconfig.federation.json",
             "rebuildDelay": 500,
             "cacheExternalArtifacts": true,

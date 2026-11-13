@@ -1,0 +1,24 @@
+type Query {
+    usernameExists(username: String!): UsernameExistsResponse!
+}
+
+type UsernameExistsResponse {
+    exists: Boolean!
+}
+
+input AddUserInput {
+    name: String!
+    username: String!
+    password: String!
+}
+
+type Mutation {
+    addUser(input: AddUserInput!): User!
+}
+
+type User {
+    id: ID!
+    name: String!
+    username: String!
+    email: String
+}
