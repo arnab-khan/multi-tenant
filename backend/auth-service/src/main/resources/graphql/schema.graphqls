@@ -1,4 +1,5 @@
 type Query {
+    me: User
     usernameExists(username: String!): UsernameExistsResponse!
 }
 
@@ -13,12 +14,30 @@ input AddUserInput {
 }
 
 type Mutation {
+    logout: Boolean!
+    login(input: LoginInput!): LoginResponse!
     addUser(input: AddUserInput!): User!
+}
+
+input LoginInput {
+    username: String!
+    password: String!
+}
+
+type LoginResponse {
+    success: Boolean!
+    message: String!
+    user: User
 }
 
 type User {
     id: ID!
     name: String!
     username: String!
+    role: Role!
     email: String
+}
+
+enum Role {
+    USER
 }

@@ -26,6 +26,19 @@ export interface AddUserInput {
   password: string;
 }
 
+export interface LoginInput {
+  username: string;
+  password: string;
+}
+
+export interface LoginData {
+  login: {
+    success: boolean;
+    message: string;
+    user: (AddUserData['addUser'] & { role: string }) | null;
+  };
+}
+
 export interface AddUserData {
   addUser: {
     id: string;

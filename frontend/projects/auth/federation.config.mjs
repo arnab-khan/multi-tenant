@@ -24,6 +24,7 @@ export default withNativeFederation({
         },
       },
     ),
+    '@app/shared-state': { singleton: true, strictVersion: true, requiredVersion: '0.0.0', build: 'package' },
   },
 
   skip: [

@@ -6,4 +6,11 @@
   <a routerLink="/profile">Profile</a>
   <a routerLink="/dynamic-sites">Dynamic Sites</a>
   <a routerLink="/dynamic-forms">Dynamic Forms</a>
+  @if (session.user(); as user) {
+    <span class="username">{{ user.username }}</span>
+    <button type="button" (click)="logout()" [disabled]="loggingOut()">
+      {{ loggingOut() ? 'Logging out...' : 'Log out' }}
+    </button>
+  }
 </nav>
+<span aria-live="polite">{{ logoutMessage() }}</span>

@@ -1,13 +1,12 @@
 package in.arnabkhan.multitenant.auth.repository;
 
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import in.arnabkhan.multitenant.auth.entity.User;
 
-public interface UserRepository extends JpaRepository<User, UUID> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByEmail(String email);
 

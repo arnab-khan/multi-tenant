@@ -6,6 +6,21 @@ export const USERNAME_EXISTS_QUERY = `
   }
 `;
 
+export const LOGIN_MUTATION = `
+  mutation Login($input: LoginInput!) {
+    login(input: $input) {
+      success
+      message
+      user {
+        id
+        name
+        username
+        role
+      }
+    }
+  }
+`;
+
 export const ADD_USER_MUTATION = `
   mutation AddUser($input: AddUserInput!) {
     addUser(input: $input) {

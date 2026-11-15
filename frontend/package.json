@@ -2,6 +2,10 @@
   "name": "multi-tenant-web",
   "version": "0.0.0",
   "scripts": {
+    "build:shared": "node node_modules/@angular/compiler-cli/bundles/src/bin/ngc.js -p projects/shared-state/tsconfig.lib.json",
+    "prestart": "npm run build:shared",
+    "prebuild": "npm run build:shared",
+    "pretest": "npm run build:shared",
     "ng": "ng",
     "start": "concurrently --kill-others-on-fail --names shell,auth,profile,dynamic-sites,dynamic-forms \"ng serve shell --port 4200\" \"ng serve auth --port 4201\" \"ng serve profile --port 4202\" \"ng serve dynamic-sites --port 4203\" \"ng serve dynamic-forms --port 4204\"",
     "build": "ng build",
@@ -21,6 +25,7 @@
     "@angular/platform-server": "^22.1.0",
     "@angular/router": "^22.1.0",
     "@angular/ssr": "^22.1.8",
+    "@app/shared-state": "file:projects/shared-state",
     "cors": "^2.8.5",
     "es-module-shims": "^2.8.0",
     "express": "^5.1.0",
